@@ -1,33 +1,44 @@
-function pivot(arr, start = 0, end = arr.length - 1) {
-	function swap(arr, j, i) {
-		let temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
-	}
+//implement a quicksort
+// a quicksort needs a pivot to put in as the first cemented place
+//never create another array! only work with given array
 
-	let pivot = arr[start];
-	let swapIdx = start;
+let array1 = [9, 14, 11, 15, 10, 7, 15, 8, 18, 4, 19, 13, 16, 4, 1, 2, 3, 12, 0, 12, 2, 10, 2, 3, 1, 12, 10, 10, 10, 1];
 
+//pivot
+const pivot = (array, start = 0, end = array.length - 1) => {
+	//needs a swap
+	const swap = (array, idx1, idx2) => {
+		let temp = array[idx1];
+		array[idx1] = array[idx2];
+		array[idx2] = temp;
+	};
+
+	//pivot is the value of the first element or whatever element we want as a pivot
+	let pivot = array[start];
+	//swapIdx is the number of swaps that happened and the number we'll use to swap whatever index
+	let swapIdx = start; // should have the same value as the start parameter
+
+	//loop through the array to put all the numbers that are less than the pivot on the left side and the numbers that are greater than the pivot on the right side
+	//since our pivot is the first element, have to loop start at the second element
 	for (let i = start + 1; i <= end; i++) {
-		if (pivot > arr[i]) {
+		if (pivot >= array[i]) {
 			swapIdx++;
-			swap(arr, swapIdx, i);
+			swap(array, swapIdx, i);
 		}
 	}
-	swap(arr, start, swapIdx);
+	//swap the first element and the current elemen selected by the swapIdx
+	swap(array, swapIdx, start);
 	return swapIdx;
-}
+};
 
-// console.log(pivot([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18]))
-
-function quickSort(arr, left = 0, right = arr.length - 1) {
+const quicksort = (array, left = 0, right = array.length - 1) => {
 	if (left < right) {
-		let pivotIndex = pivot(arr, left, right);
-		//left
-		quickSort(arr, left, pivotIndex - 1);
-		//right
-		quickSort(arr, pivotIndex + 1, right);
+		let pivotIndex = pivot(array, left, right);
+		quicksort(array, left, pivotIndex - 1);
+		quicksort(array, pivotIndex + 1, right);
 	}
-	return arr;
-}
-console.log(quickSort([28, 41, 4, 11, 16, 1, 40, 14, 36, 37, 42, 18]));
+
+	return array;
+};
+
+console.log(quicksort(array1));
