@@ -32,6 +32,7 @@ class SinglyLinkedList {
       console.log(current.val)
       current = current.next;
     }
+    return this
   }
 
   pop() {
@@ -87,8 +88,53 @@ class SinglyLinkedList {
       current = current.next
       place++
     }
-    console.log(current)
     return current
+  }
+
+  set(value, index) {
+    let node = this.get(index)
+    if (!node) return false
+    node.val = value
+    return true
+  }
+
+  insert(value, index) {
+    let newNode = new Node(value)
+    if (index < 0 || index >= this.length) return false
+    if (index === this.length) !!this.push(newNode) // !! converts to boolean
+    if (index === 0) !!this.unshift(newNode)
+    let foundNode = this.get(index - 1)
+    let previousNext = foundNode.next
+    foundNode.next = newNode
+    newNode.next = previousNext
+
+    this.length++
+    return true
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return false
+    if (index === 0) return this.shift()
+    if (index === this.length - 1) return this.pop()
+    let foundNode = this.get(index - 1)
+    let temp = foundNode.next.next
+    foundNode.next = temp
+
+    return this
+  }
+
+  reverse() {
+    // console.log(this.length)
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next, prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
   }
 }
 
@@ -98,5 +144,6 @@ list.push(2)
 list.push(3)
 list.push(4)
 list.push(5)
-list.get(2)
-// console.log(list.traverse())
+
+list.reverse(2)
+console.log(list.traverse())
