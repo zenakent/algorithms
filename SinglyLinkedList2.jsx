@@ -100,14 +100,21 @@ class SinglyLinkedList {
   }
 
   //set the new value at index
+  // set(val, index) {
+  //   if (index < 0 || index >= this.length) return null
+  //   let current = this.head;
+  //   for (let i = 0; i < index; i++) {
+  //     current = current.next
+  //   }
+  //   current.val = val;
+  //   return current
+  // }
+
   set(val, index) {
     if (index < 0 || index >= this.length) return null
-    let current = this.head;
-    for (let i = 0; i < index; i++) {
-      current = current.next
-    }
-    current.val = val;
-    return current
+    let get = this.get(index)
+    get.val = val
+    return get
   }
 
 
@@ -168,6 +175,6 @@ list.push(3)
 list.push(4)
 list.set('Maui', 1)
 list.insert('Vina', 1)
-list.remove(2)
+
 list.reverse()
 list.traverse()
