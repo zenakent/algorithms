@@ -58,11 +58,11 @@ class DoublyLinkedList {
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+      oldHead.prev = null;
     }
-    this.head = this.head.next;
-    this.head.prev = null;
-    oldHead.prev = null;
-
     this.length--
     return oldHead
   }
@@ -74,10 +74,12 @@ class DoublyLinkedList {
     if (this.length === 1) {
       this.head = newNode;
       this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
     }
-    this.head.prev = newNode;
-    newNode.next = this.head;
-    this.head = newNode;
+
     this.length++;
 
     return this;
@@ -150,8 +152,9 @@ list.push(1)
 list.push(2)
 list.push(3)
 list.push(4)
-list.insert("Maui", 2)
-list.remove(3)
+list.shift()
+// list.insert("Maui", 2)
+// list.remove(3)
 // list.get(0)
 // list.set('Maui', 2)
 list.traverse()
