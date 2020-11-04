@@ -27,6 +27,6 @@ function bubbleUp(list, index) {
 
 
 
-insert(55)
+console.log(insert(55))
 
 
