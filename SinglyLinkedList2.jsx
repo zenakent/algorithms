@@ -176,5 +176,5 @@ list.push(4)
 list.set('Maui', 1)
 list.insert('Vina', 1)
 
-list.reverse()
+list.remove(2)
 list.traverse()

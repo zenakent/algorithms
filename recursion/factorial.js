@@ -19,4 +19,4 @@ function factorial(num) {
   return num * factorial(num - 1)
 }
 
-console.log(factorial(7))
+console.log(factorial(8))

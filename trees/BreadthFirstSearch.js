@@ -117,10 +117,35 @@ tree.insert(4)
 tree.insert(2)
 
 
-tree.breadthFirstSearchSearch(0)
+// tree.breadthFirstSearchSearch(2)
+tree.breadthFirstSearch()
 
 /*
       5
   3       8
 2   4   7   9
 */
+
+function nextId(ids) {
+  //this will be awesome!
+  console.log(search(ids, ids.length))
+}
+
+function search(array, size) {
+  let a = 0;
+  let b = size - 1;
+  let mid = 0;
+
+  while (b > a + 1) {
+    mid = (a + b) / 2
+    if (array[a] - a !== array[mid] - mid) {
+      b = mid
+    } else if (array[b] - b !== array[mid] - mid) {
+      a = mid
+    }
+    return array[mid] + 1
+  }
+}
+
+
+// nextId([0, 1, 2, 3, 5])

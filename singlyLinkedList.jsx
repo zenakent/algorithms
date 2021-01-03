@@ -32,7 +32,7 @@ class SinglyLinkedList {
       console.log(current.val)
       current = current.next;
     }
-    return this
+    return this.value
   }
 
   pop() {
@@ -145,5 +145,5 @@ list.push(3)
 list.push(4)
 list.push(5)
 
-list.reverse(2)
+list.remove(5)
 console.log(list.traverse())

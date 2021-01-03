@@ -1,0 +1,1 @@
+console.log("It's six o'clock \n" + "Remember to say 'please' and 'thank you'")

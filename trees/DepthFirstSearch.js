@@ -97,7 +97,9 @@ tree.insert(3)
 tree.insert(4)
 tree.insert(2)
 
-tree.DFSInOrder();
+tree.DFSPreOrder();
+tree.DFSPostOrder();
+console.log(tree)
 
 /*
       5
